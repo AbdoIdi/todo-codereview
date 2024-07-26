@@ -1,4 +1,4 @@
-import { ADD_TODO, EDIT_TODO, TOGGLE_TODO, TOGGLE_ALL } from "../constants/action-types";
+import { ADD_TODO, EDIT_TODO, TOGGLE_TODO, TOGGLE_ALL, DELETE_TODO, CLEAR_COMPLETED } from "../constants/action-types";
 
 const initialState = [];
 function uuid() {
@@ -30,6 +30,10 @@ export default function todos(state = initialState, action) {
             // eslint-disable-next-line no-case-declarations
             const areAllMarked = state.every((todo) => todo.completed);
             return state.map((todo) => (todo.completed === areAllMarked ? { ...todo, completed: !areAllMarked } : todo));
+        case DELETE_TODO:
+            return state.filter((todo) => todo.id !== action.id);
+        case CLEAR_COMPLETED:
+            return state.filter((todo) => !todo.completed );
         default:
             return state.slice();
     }

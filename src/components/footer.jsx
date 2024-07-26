@@ -13,7 +13,7 @@ export default class Footer extends Component {
     };
 
     render() {
-        const { activeCount, filter } = this.props;
+        const { activeCount, filter, onClearCompleted } = this.props;
         return (
             <footer className="footer" data-testid="footer">
                 <span className="todo-count">{`${activeCount} ${activeCount === 1 ? "item" : "items"} left!`}</span>
@@ -34,7 +34,7 @@ export default class Footer extends Component {
                         </a>
                     </li>
                 </ul>
-                <button className="clear-completed" onClick={() => console.log("clear completed")}>
+                <button className="clear-completed" onClick={onClearCompleted}>
                     Clear completed
                 </button>
             </footer>

@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import Main from "../components/main";
-import { editTodo, toggleTodo, toggleAll } from "../actions";
+import { editTodo, toggleTodo, toggleAll, deleteTodo, clearCompleted } from "../actions";
 import { withRouter } from "react-router-dom";
 import { getCompletedTodos, getVisibleTodos } from "../selectors/filters";
 
@@ -19,6 +19,8 @@ const mapDispatchToProps = {
     editTodo,
     toggleTodo,
     toggleAll,
+    deleteTodo,
+    clearCompleted
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));

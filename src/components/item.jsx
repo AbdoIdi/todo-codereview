@@ -30,7 +30,7 @@ export default class Item extends PureComponent {
     };
 
     render() {
-        const { todo, toggleTodo, index } = this.props;
+        const { todo, toggleTodo, deleteTodo, index } = this.props;
 
         let element;
         if (this.state.editing) {
@@ -42,7 +42,7 @@ export default class Item extends PureComponent {
                     <label onDoubleClick={this.handleDoubleClick} data-testid="todo-item-label">
                         {todo.text}
                     </label>
-                    <button className="destroy" data-testid="todo-item-button" onClick={() => console.log(`Delete item ${todo.id}`)} />
+                    <button className="destroy" data-testid="todo-item-button" onClick={() => deleteTodo(todo.id)} />
                 </div>
             );
         }

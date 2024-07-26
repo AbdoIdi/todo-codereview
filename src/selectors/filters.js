@@ -1,9 +1,13 @@
-import { SHOW_ALL } from "../constants/todo-filters";
+import { SHOW_ACTIVE, SHOW_ALL, SHOW_COMPLETED } from "../constants/todo-filters";
 
 function getFilteredTodos(todos, filter) {
     switch (filter) {
         case SHOW_ALL:
             return todos;
+        case SHOW_ACTIVE:
+            return todos.filter((todo) => !todo.completed);
+        case SHOW_COMPLETED:
+            return todos.filter((todo) => todo.completed);
         default:
             return todos;
     }
@@ -14,6 +18,5 @@ export function getVisibleTodos(todos, route) {
 }
 
 export function getCompletedTodos(todos) {
-    //TODO: this function is to be implemented
-    return 0;
+    return todos.filter((todo) => todo.completed);
 }
